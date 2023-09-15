@@ -1,6 +1,6 @@
 function usrpTransmit(hexString, fs)
     clc;
-    time_scope = timescope();
+    time_scope = timescope(SampleRate=fs);
     modData = [];
 
     [modData, sof, eof] = modulateHexString(hexString, fs);

@@ -15,4 +15,5 @@ end
 sof = generateFrameStartEnd(0,1,fs);
 eof = generateFrameStartEnd(1,1,fs);
 
+modData = [sof, modData, eof];
 end
