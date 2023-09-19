@@ -29,7 +29,7 @@ if modType == 1
         if data(2*i-1)==0 && data(2*i)==0
             startData = (i-1)*symbolDataLength;
             modData(floor(1+startData):floor(symbolDataLength/8+startData)) = 1;
-            modData(floor(symbolDataLength/8+startData+1):floor(symbolDataLength/4+startData-1)) = 0;
+            modData(floor(symbolDataLength/8+startData+1):floor(symbolDataLength/4+startData-1)) = 0.7;
             modData(floor(symbolDataLength/4+startData):floor(symbolDataLength+startData)) = 1;
         end
         
@@ -37,7 +37,7 @@ if modType == 1
         if data(2*i-1)==0 && data(2*i)==1
             startData = (i-1)*symbolDataLength;
             modData(floor(1+startData):floor(symbolDataLength/8*3+startData)) = 1;
-            modData(floor(symbolDataLength/8*3+startData+1):floor(symbolDataLength/2+startData-1)) = 0;
+            modData(floor(symbolDataLength/8*3+startData+1):floor(symbolDataLength/2+startData-1)) = 0.7;
             modData(floor(symbolDataLength/2+startData):floor(symbolDataLength+startData)) = 1;
         end
 
@@ -45,7 +45,7 @@ if modType == 1
         if data(2*i-1)==1 && data(2*i)==0
             startData = (i-1)*symbolDataLength;
             modData(floor(1+startData):floor(symbolDataLength/8*5+startData)) = 1;
-            modData(floor(symbolDataLength/8*5+startData+1):floor(symbolDataLength/4*3+startData-1)) = 0;
+            modData(floor(symbolDataLength/8*5+startData+1):floor(symbolDataLength/4*3+startData-1)) = 0.7;
             modData(floor(symbolDataLength/4*3+startData):floor(symbolDataLength+startData)) = 1;
         end
 
@@ -53,7 +53,7 @@ if modType == 1
         if data(2*i-1)==1 && data(2*i)==1
             startData = (i-1)*symbolDataLength;
             modData(floor(1+startData):floor(symbolDataLength/8*7+startData)) = 1;
-            modData(floor(symbolDataLength/8*7+startData+1):floor(symbolDataLength+startData)) = 0;
+            modData(floor(symbolDataLength/8*7+startData+1):floor(symbolDataLength+startData)) = 0.7;
         end
     end
 end

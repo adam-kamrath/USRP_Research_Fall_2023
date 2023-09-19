@@ -21,11 +21,10 @@ if frameType==0 && modType ==1
     frameTime = 75.52e-06; % overall time of the modulated data
     frameDataLength = round(frameTime/ts); % the number of data points in 1 symbol
     frame = zeros(1,frameDataLength);
-    disp(frameDataLength);
 
-    frame(1:floor((frameDataLength/8)-1)) = 0;
+    frame(1:floor((frameDataLength/8)-1)) = 0.7;
     frame(floor(frameDataLength/8):floor(frameDataLength/8*5)) = 1;
-    frame(floor(frameDataLength/8*5+1):floor(frameDataLength/4*3-1)) = 0;
+    frame(floor(frameDataLength/8*5+1):floor(frameDataLength/4*3-1)) = 0.7;
     frame(floor(frameDataLength/4*3):floor(frameDataLength)) = 1;
 end
 
@@ -37,7 +36,7 @@ if frameType==1 && modType ==1
     frame = zeros(1,frameDataLength);
 
     frame(1:floor(frameDataLength/2)) = 1;
-    frame(floor(frameDataLength/2+1):floor(frameDataLength/4*3-1)) = 0;
+    frame(floor(frameDataLength/2+1):floor(frameDataLength/4*3-1)) = 0.7;
     frame(floor(frameDataLength/4*3):floor(frameDataLength)) = 1;
 end
 
@@ -48,9 +47,9 @@ if frameType==0 && modType ==0
     frameDataLength = round(frameTime/ts); % the number of data points in 1 symbol
     frame = zeros(1,frameDataLength);
 
-    frame(1:floor(frameDataLength/8-1)) = 0;
+    frame(1:floor(frameDataLength/8-1)) = 0.7;
     frame(floor(frameDataLength/8):floor(frameDataLength/8*7)) = 1;
-    frame(floor(frameDataLength/8*7+1):floor(frameDataLength)) = 0;
+    frame(floor(frameDataLength/8*7+1):floor(frameDataLength)) = 0.7;
 end
 
 %Adds a 1 out of 256 end of frame to data
@@ -61,6 +60,6 @@ if frameType==1 && modType ==0
     frame = zeros(1,frameDataLength);
 
     frame(1:floor(frameDataLength/2)) = 1;
-    frame(floor(frameDataLength/2+1):floor(frameDataLength/4*3-1)) = 0;
+    frame(floor(frameDataLength/2+1):floor(frameDataLength/4*3-1)) = 0.7;
     frame(floor(frameDataLength/4*3):floor(frameDataLength)) = 1;
 end
