@@ -3,7 +3,7 @@ clc;
 center_frequency = 13.56e06;
 sampling_rate = 2e+06;
 decimation_factor = round(100000000/sampling_rate);
-file_name = '3_Node_2M.bb';
+file_name = 'MAX66300-1.bb';
 file_path = append('.\Signals\', file_name);
 
 %Create the receiver object
@@ -22,13 +22,13 @@ rxWriter = comm.BasebandFileWriter(file_path, ...
     CenterFrequency=center_frequency);
 
 %Create Time Scope object
-time_scope = timescope(SampleRate=sampling_rate);
+time_scope = timescope(SampleRate=sampling_rate, Position=[1000,100,800,350]);
 
 %Plot 1 seconds of data, one frame at a time
 disp("Reception Started");
 frameduration = (rx.SamplesPerFrame)/(sampling_rate);
 time = 0; 
-while time < 3
+while time < 7
   frame = rx();
   rxWriter(frame);
   time_scope(frame)
