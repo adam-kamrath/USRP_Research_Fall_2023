@@ -3,7 +3,7 @@
 % numbers into a series of pulses and return
 % the new array.
 
-function modData = generatePulseData(modType, fs, data)
+function modData = generatePulseData(modType, fs, data, ask_percent)
 
 %%
 % modType: 0: 1 in 256 for slow data rate
@@ -14,7 +14,7 @@ function modData = generatePulseData(modType, fs, data)
 ts = 1/fs; %unit time
 
 dataLength = length(data);
-
+low_percent = 1-ask_percent;
 % Generates data for 1 out of 4 data rate
 if modType == 1
     
@@ -29,7 +29,7 @@ if modType == 1
         if data(2*i-1)==0 && data(2*i)==0
             startData = (i-1)*symbolDataLength;
             modData(floor(1+startData):floor(symbolDataLength/8+startData)) = 1;
-            modData(floor(symbolDataLength/8+startData+1):floor(symbolDataLength/4+startData-1)) = 0.7;
+            modData(floor(symbolDataLength/8+startData+1):floor(symbolDataLength/4+startData-1)) = low_percent;
             modData(floor(symbolDataLength/4+startData):floor(symbolDataLength+startData)) = 1;
         end
         
@@ -37,7 +37,7 @@ if modType == 1
         if data(2*i-1)==0 && data(2*i)==1
             startData = (i-1)*symbolDataLength;
             modData(floor(1+startData):floor(symbolDataLength/8*3+startData)) = 1;
-            modData(floor(symbolDataLength/8*3+startData+1):floor(symbolDataLength/2+startData-1)) = 0.7;
+            modData(floor(symbolDataLength/8*3+startData+1):floor(symbolDataLength/2+startData-1)) = low_percent;
             modData(floor(symbolDataLength/2+startData):floor(symbolDataLength+startData)) = 1;
         end
 
@@ -45,7 +45,7 @@ if modType == 1
         if data(2*i-1)==1 && data(2*i)==0
             startData = (i-1)*symbolDataLength;
             modData(floor(1+startData):floor(symbolDataLength/8*5+startData)) = 1;
-            modData(floor(symbolDataLength/8*5+startData+1):floor(symbolDataLength/4*3+startData-1)) = 0.7;
+            modData(floor(symbolDataLength/8*5+startData+1):floor(symbolDataLength/4*3+startData-1)) = low_percent;
             modData(floor(symbolDataLength/4*3+startData):floor(symbolDataLength+startData)) = 1;
         end
 
@@ -53,7 +53,7 @@ if modType == 1
         if data(2*i-1)==1 && data(2*i)==1
             startData = (i-1)*symbolDataLength;
             modData(floor(1+startData):floor(symbolDataLength/8*7+startData)) = 1;
-            modData(floor(symbolDataLength/8*7+startData+1):floor(symbolDataLength+startData)) = 0.7;
+            modData(floor(symbolDataLength/8*7+startData+1):floor(symbolDataLength+startData)) = low_percent;
         end
     end
 end

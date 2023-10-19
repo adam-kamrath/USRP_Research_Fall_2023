@@ -1,9 +1,9 @@
 clc;
 
-center_frequency = 13.56e06;
+center_frequency = 14.01e06;
 sampling_rate = 2e+06;
 decimation_factor = round(100000000/sampling_rate);
-file_name = 'TwoCard_InvRequest.bb';
+file_name = 'DistanceTest.bb';
 file_path = append('.\Signals\', file_name);
 
 %Create the receiver object
@@ -28,7 +28,7 @@ time_scope = timescope(SampleRate=sampling_rate, Position=[1000,100,800,350]);
 disp("Reception Started");
 frameduration = (rx.SamplesPerFrame)/(sampling_rate);
 time = 0; 
-while time < 7
+while time < 4
   frame = rx();
   rxWriter(frame);
   time_scope(frame)
