@@ -1,4 +1,5 @@
 function usrpTransmit(hexString, fs, ask_percent)
+    clc;
     time_scope = timescope(SampleRate=fs);
 
     [modData, sof, eof] = modulateHexString(hexString, fs, ask_percent);
@@ -18,7 +19,8 @@ function usrpTransmit(hexString, fs, ask_percent)
             carrier1];
 
     sine_data = generateSine(fs, length(data));
-    time_scope(data.*sine_data);
+    data = data.*sine_data;
+    time_scope(abs(data));
     
     % %% set up usrp
     % connectedRadios = findsdru;
