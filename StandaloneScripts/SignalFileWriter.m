@@ -1,9 +1,9 @@
 clc;
 
-center_frequency = 14.01e06;
+center_frequency = 13.56e06;
 sampling_rate = 2e+06;
 decimation_factor = round(100000000/sampling_rate);
-file_name = 'DistanceTest.bb';
+file_name = 'System_Information.bb';
 file_path = append('.\Signals\', file_name);
 
 %Create the receiver object

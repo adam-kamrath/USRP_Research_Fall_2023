@@ -1,6 +1,6 @@
 function sineData = generateSine(fs, num_of_samples)
     time_scope = timescope(SampleRate=fs);
-    sine = dsp.SineWave(SamplesPerFrame=num_of_samples, SampleRate=fs, Frequency=166.66);
+    sine = dsp.SineWave(SamplesPerFrame=num_of_samples, SampleRate=fs, Frequency=166.66, ComplexOutput=true);
     sineData = sine();
     % time_scope(sineData);
     release(sine);
