@@ -1,9 +1,9 @@
 clc;
 
-center_frequency = 13.56e06;
-sampling_rate = 2e+06;
+center_frequency = 13560000;
+sampling_rate = 2000000;
 decimation_factor = round(100000000/sampling_rate);
-file_name = 'Transmit_Test.bb';
+file_name = 'Amp_Transmit_Test.bb';
 file_path = append('.\Signals\', file_name);
 
 %Create the receiver object
@@ -14,7 +14,7 @@ rx = comm.SDRuReceiver(...
                     DecimationFactor = decimation_factor, ...
                     Gain = 0, ...
                     CenterFrequency = center_frequency, ...
-                    SamplesPerFrame = 1000);
+                    SamplesPerFrame = 50000);
 
 %Create the file writer object
 rxWriter = comm.BasebandFileWriter(file_path, ...

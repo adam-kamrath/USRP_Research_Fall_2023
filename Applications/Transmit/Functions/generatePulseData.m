@@ -18,8 +18,8 @@ low_percent = 1-ask_percent;
 % Generates data for 1 out of 4 data rate
 if modType == 1
     
-    modTime = dataLength/2*65*1e-6; % overall time of the modulated data
-    symbolDataLength = round(65*1e-6/ts); % the number of data points in 1 symbol
+    modTime = dataLength/2*75.56*1e-6; % overall time of the modulated data
+    symbolDataLength = round(75.56*1e-6/ts); % the number of data points in 1 symbol
     modDataLength = symbolDataLength*dataLength/2; % the number of data points need to be returned
     modData = zeros(1,modDataLength);
 
