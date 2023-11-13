@@ -1,7 +1,6 @@
 clc; %clears the console
 
 %%Get initial values
-center_frequency = 13560000;
 tx_fs = 12.5e+06;
 InterpolationFactor = round(100e+06/tx_fs);
 ask_percent = 1;
@@ -30,35 +29,20 @@ sine_data = generateSine(tx_fs, length(data), 166.6, 1);
 data = data.*sine_data;
 
 %%Plots data if check box is selected
-%time_scope(abs(data));
+time_scope(abs(data));
 
 %% set up transmitter radio
 tx = comm.SDRuTransmitter(Platform = "N200/N210/USRP2", ...
     IPAddress =  '192.168.10.3', ...
-    CenterFrequency = center_frequency, ...
+    CenterFrequency = 13.56*1e6, ...
     Gain = 0, ...
     MasterClockRate = 100*1e6, ...
     InterpolationFactor = InterpolationFactor);
 
-%Create the receiver object
-rx = comm.SDRuReceiver(...
-                    Platform = "N200/N210/USRP2", ...
-                    IPAddress = '192.168.10.2', ...
-                    OutputDataType = "double", ...
-                    DecimationFactor = DecimationFactor, ...
-                    Gain = 0, ...
-                    CenterFrequency = center_frequency, ...
-                    SamplesPerFrame = 50000);
-
-rx_data = [];
-disp("Transmitting and Receiving");
-for i = 1:1:1
+tx.r
+disp("Transmitting");
+for i = 1:1:100
     tx(data);
-    frame = rx();
-    rx_data = [rx_data, frame];
 end
-disp("Done Transmitting and Receiving.")
-rx_data = reshape(rx_data, [], 1);
-time_scope(abs(rx_data));
+disp("Done Transmitting.")
 release(tx);
-release(rx);
